@@ -5,3 +5,5 @@
  end
  function love.draw()
     love.graphics.printf("Hello pong",0,WINDOW_HEIGHT/2,WINDOW_WIDTH,'center')
+ end
+ 
