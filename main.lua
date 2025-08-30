@@ -4,6 +4,5 @@
     love.window.setMode(WINDOW_WIDTH,WINDOW_HEIGHT,{resizable=false,vsync=true,fullscreen=false})
  end
  function love.draw()
-    love.graphics.printf("Hello pong",0,WINDOW_HEIGHT/2,WINDOW_WIDTH,'center')
+    love.graphics.printf("Hello",0,WINDOW_HEIGHT/2,WINDOW_WIDTH,'center')
  end
- 
