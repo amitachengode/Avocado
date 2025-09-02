@@ -12,7 +12,7 @@ end
 
 function Ball:collision(paddle)
     -- checking first if left paddle's right edge and ball's left edge are colliding
-    if paddle.x+paddle.width<self.x or paddle.x>=self.x+self.width then
+    if paddle.x+paddle.width<self.x or paddle.x>=self.x+self.WIDTH then
         return false
     end
     return true
