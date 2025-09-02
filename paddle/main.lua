@@ -1,5 +1,3 @@
-WINDOW_WIDTH=1280
-WINDOW_HEIGHT=720
 VIRTUAL_WIDTH=432
 VIRTUAL_HEIGHT=243
 
@@ -17,8 +15,9 @@ function love.load()
     love.window.setTitle('Pong')
     player1=Paddle(5,20,5,30)
     player2=Paddle(VIRTUAL_WIDTH-10,VIRTUAL_HEIGHT-20,5,30)
-    love.window.setMode(WINDOW_WIDTH,WINDOW_HEIGHT,{vsync=true,resizable=true,fullscreen=false})
-    push:setupScreen(VIRTUAL_WIDTH,VIRTUAL_HEIGHT,WINDOW_WIDTH,WINDOW_HEIGHT)
+    love.window.setMode(0,0,{vsync=true,resizable=true,fullscreen=false})
+    WINDOW_WIDTH,WINDOW_HEIGHT=love.graphics.getDimensions()
+    push:setupScreen(VIRTUAL_WIDTH,VIRTUAL_HEIGHT,WINDOW_WIDTH,WINDOW_HEIGHT,{resizable=true})
     ball=Ball(VIRTUAL_WIDTH/2-2,VIRTUAL_HEIGHT/2-2,4,4)
     game_state='start'
 end
