@@ -6,8 +6,8 @@ function Ball:init(x,y,WIDTH,HEIGHT)
     self.y=y
     self.WIDTH=WIDTH
     self.HEIGHT=HEIGHT
-    self.dx=math.random(2)==1 and 100 or -100
-    self.dy=math.random(-50,50)
+    self.dx=math.random(2)==1 and 120 or -120
+    self.dy=math.random(-100,100)
 end
 
 function Ball:collision(paddle)
@@ -42,11 +42,11 @@ function Ball:reset()
     self.x=VIRTUAL_WIDTH/2-2
     self.y=VIRTUAL_HEIGHT/2-2
     if game_state=='player1Serve' then
-        self.dx=100
+        self.dx=120
     elseif game_state=='player2Serve' then
-        self.dx=-100
+        self.dx=-120
     end
-    self.dy=math.random(-50,50)
+    self.dy=math.random(-100,100)
 end
 
 function Ball:draw()
