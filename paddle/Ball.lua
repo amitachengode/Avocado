@@ -10,6 +10,13 @@ function Ball:init(x,y,WIDTH,HEIGHT)
     self.dy=math.random(-50,50)
 end
 
+function Ball:collision(paddle)
+    -- checking first if left paddle's right edge and ball's left edge are colliding
+    if paddle.x+paddle.width<self.x or paddle.x>=self.x+self.width then
+        return false
+    end
+end
+
 function Ball:update(dt)
     self.x=self.x+self.dx*dt
     self.y=self.y+self.dy*dt
@@ -27,12 +34,6 @@ function Ball:update(dt)
     end
 end
 
-function Ball:collision(paddle)
-    -- checking first if left paddle's right edge and ball's left edge are colliding
-    if paddle.x+paddle.width<self.x or paddle.x>=self.x+self.width then
-        return false
-    end
-end
 function Ball:reset()
     self.x=VIRTUAL_WIDTH/2-2
     self.y=VIRTUAL_HEIGHT/2-2

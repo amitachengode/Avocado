@@ -48,6 +48,11 @@ function love.update(dt)
     end
 end
 
+function collision()
+    if ball:collision(player1) or ball:collision(player2) then
+        ball.dx=-ball.dx
+    end
+
 function love.keypressed(key)
     if key=='escape' then
         love.event.quit()
