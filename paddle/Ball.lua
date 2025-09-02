@@ -15,6 +15,7 @@ function Ball:collision(paddle)
     if paddle.x+paddle.width<self.x or paddle.x>=self.x+self.width then
         return false
     end
+    return true
 end
 
 function Ball:update(dt)
