@@ -57,7 +57,7 @@ function collision()
     end
     if ball:collision(player2) then
         ball.dx=-ball.dx*1.1
-        ball.x=player2.x-player.width
+        ball.x=player2.x-player2.width
         ball.dy=ball.dy*1.05
     end
 end
