@@ -15,6 +15,9 @@ function Ball:collision(paddle)
     if paddle.x+paddle.width<self.x or paddle.x>=self.x+self.WIDTH then
         return false
     end
+    if self.y<paddle.y or self.y>paddle.y+paddle.height then
+        return false
+    end
     return true
 end
 
