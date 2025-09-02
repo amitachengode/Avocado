@@ -14,7 +14,8 @@ require 'Paddle'
 function love.load()
     math.randomseed(os.time())
     love.graphics.setDefaultFilter('nearest','nearest')
-    font=love.graphics.newFont('font.ttf',24)
+    largefont=love.graphics.newFont('font.ttf',24)
+    smallfont=love.graphics.newFont('font.ttf',8)
     love.window.setTitle('Pong')
     player1=Paddle(5,20,5,30)
     player2=Paddle(VIRTUAL_WIDTH-10,VIRTUAL_HEIGHT-20,5,30)
@@ -64,7 +65,7 @@ end
 
 function love.draw()
     push:start()
-    love.graphics.setFont(font)
+    love.graphics.setFont(largefont)
     love.graphics.clear(40/255,45/255,52/255,1)
     if game_state=='start' then
         love.graphics.printf("Press SPACE to start the game",0,VIRTUAL_HEIGHT-60,VIRTUAL_WIDTH,'center')
@@ -83,5 +84,8 @@ function love.draw()
 end
 
 function getFPS()
+    love.setFont(smallfont)
     love.setColor(0,1,0,1)
-    love.graphics.print("FPS: ", tostring(love.timer.getFPS()),10,10)
+    love.graphics.print("FPS: " .. tostring(love.timer.getFPS()),10,10)
+    love.setColor(1,1,1,1)
+end
