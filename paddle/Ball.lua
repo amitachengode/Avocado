@@ -24,7 +24,7 @@ end
 function Ball:update(dt)
     self.x=self.x+self.dx*dt
     self.y=self.y+self.dy*dt
-    if self.y>VIRTUAL_HEIGHT or self.y<0 then
+    if self.y>VIRTUAL_HEIGHT-4 or self.y<0 then
         self.dy=-self.dy
     end
     if self.x<0 then

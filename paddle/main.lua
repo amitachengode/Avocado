@@ -3,9 +3,6 @@ WINDOW_HEIGHT=720
 VIRTUAL_WIDTH=432
 VIRTUAL_HEIGHT=243
 
-PADDLE_SIZEY=30
-PADDLE_SPEED=200
-
 push=require 'push'
 class=require 'class'
 require 'Ball'
