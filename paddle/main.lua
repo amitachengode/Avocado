@@ -10,6 +10,7 @@ require 'Paddle'
 
 function love.load()
     math.randomseed(os.time())
+    sounds={paddle=love.audio.newSource('sounds/paddle.wav','static'),wall=love.audio.newSource('sounds/wall.wav','static'),win=love.audio.newSource('sounds/win.wav','static'),gooff=love.audio.newSource('sounds/gooff.wav','static')}
     love.graphics.setDefaultFilter('nearest','nearest')
     largefont=love.graphics.newFont('font.ttf',24)
     smallfont=love.graphics.newFont('font.ttf',12)
@@ -41,7 +42,7 @@ function love.update(dt)
             player2.speed=-200
         elseif love.keyboard.isDown('down') then
             player2.speed=200
-        else 
+        else
             player2.speed=0
         end
         player1:update(dt)
@@ -52,11 +53,13 @@ end
 
 function collision()
     if ball:collision(player1) then
+        sounds['paddle']:play()
         ball.dx=-ball.dx*1.1
         ball.x=player1.x+player1.width
         ball.dy=ball.dy*1.05
     end
     if ball:collision(player2) then
+        sounds['paddle']:play()
         ball.dx=-ball.dx*1.1
         ball.x=player2.x-player2.width
         ball.dy=ball.dy*1.05
@@ -95,6 +98,7 @@ function love.draw()
     elseif game_state=='end' then
         love.graphics.printf("Player " .. tostring(winner) .. " wins!",0,20,VIRTUAL_WIDTH,'center')
         love.graphics.printf("Press SPACE to restart the game",0,VIRTUAL_HEIGHT-60,VIRTUAL_WIDTH,'center')
+        sounds['win']:play()
     end
     
     -- paddle 1

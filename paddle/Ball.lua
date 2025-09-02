@@ -25,13 +25,16 @@ function Ball:update(dt)
     self.x=self.x+self.dx*dt
     self.y=self.y+self.dy*dt
     if self.y>VIRTUAL_HEIGHT-4 or self.y<0 then
+        sounds['wall']:play()
         self.dy=-self.dy
     end
     if self.x<0 then
+        sounds['gooff']:play()
         player2.score=player2.score+1
         game_state='player1Serve'
         self:reset()
     elseif self.x>VIRTUAL_WIDTH then
+        sounds['gooff']:play()
         player1.score=player1.score+1
         game_state='player2Serve'
         self:reset()
