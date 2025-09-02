@@ -50,8 +50,15 @@ function love.update(dt)
 end
 
 function collision()
-    if ball:collision(player1) or ball:collision(player2) then
-        ball.dx=-ball.dx
+    if ball:collision(player1) then
+        ball.dx=-ball.dx*1.1
+        ball.x=player1.x+player1.width
+        ball.dy=ball.dy*1.05
+    end
+    if ball:collision(player2) then
+        ball.dx=-ball.dx*1.1
+        ball.x=player2.x-player.width
+        ball.dy=ball.dy*1.05
     end
 end
 
