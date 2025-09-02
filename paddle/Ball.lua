@@ -24,8 +24,13 @@ end
 function Ball:update(dt)
     self.x=self.x+self.dx*dt
     self.y=self.y+self.dy*dt
-    if self.y>VIRTUAL_HEIGHT-4 or self.y<0 then
+    if self.y>=VIRTUAL_HEIGHT-4 then
         sounds['wall']:play()
+        self.y=VIRTUAL_HEIGHT-5
+        self.dy=-self.dy
+    elseif self.y<=0  then
+        sounds['wall']:play()
+        self.y=1
         self.dy=-self.dy
     end
     if self.x<0 then
