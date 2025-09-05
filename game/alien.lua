@@ -41,8 +41,6 @@ function Alien:init(world,x,y,width,height,spritesheet)
     self.current_animation_style="idle"
     self.sprite_width=SPRITE_WIDTH
     self.sprite_height=SPRITE_HEIGHT
-
-    self.keypressed={w=false,a=false,s=false,d=false,shift=false}
     
     self.world=world
     self.body=love.physics.newBody(world,self.x,self.y,"dynamic")
@@ -51,3 +49,4 @@ function Alien:init(world,x,y,width,height,spritesheet)
     self.body:setFixedRotation(true)
     self.Fixture:setRestitution(1)
 end
+
