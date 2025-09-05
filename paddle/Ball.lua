@@ -1,0 +1,62 @@
+require 'class'
+Ball=class{}
+
+function Ball:init(x,y,WIDTH,HEIGHT)
+    self.x=x
+    self.y=y
+    self.WIDTH=WIDTH
+    self.HEIGHT=HEIGHT
+    self.dx=math.random(2)==1 and 120 or -120
+    self.dy=math.random(-100,100)
+end
+
+function Ball:collision(paddle)
+    -- checking first if left paddle's right edge and ball's left edge are colliding
+    if paddle.x+paddle.width<=self.x or paddle.x>=self.x+self.WIDTH then
+        return false
+    end
+    if self.y<=paddle.y or self.y>=paddle.y+paddle.height then
+        return false
+    end
+    return true
+end
+
+function Ball:update(dt)
+    self.x=self.x+self.dx*dt
+    self.y=self.y+self.dy*dt
+    if self.y>=VIRTUAL_HEIGHT-4 then
+        sounds['wall']:play()
+        self.y=VIRTUAL_HEIGHT-5
+        self.dy=-self.dy
+    elseif self.y<=0  then
+        sounds['wall']:play()
+        self.y=1
+        self.dy=-self.dy
+    end
+    if self.x<0 then
+        sounds['gooff']:play()
+        player2.score=player2.score+1
+        game_state='player1Serve'
+        self:reset()
+    elseif self.x>VIRTUAL_WIDTH then
+        sounds['gooff']:play()
+        player1.score=player1.score+1
+        game_state='player2Serve'
+        self:reset()
+    end
+end
+
+function Ball:reset()
+    self.x=VIRTUAL_WIDTH/2-2
+    self.y=VIRTUAL_HEIGHT/2-2
+    if game_state=='player1Serve' then
+        self.dx=120
+    elseif game_state=='player2Serve' then
+        self.dx=-120
+    end
+    self.dy=math.random(-100,100)
+end
+
+function Ball:draw()
+    love.graphics.rectangle('fill',self.x,self.y,self.WIDTH,self.HEIGHT)
+end
