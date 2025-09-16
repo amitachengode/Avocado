@@ -33,18 +33,6 @@ function player:init(world,x,y)
     self.max_speed=MAX_SPEED
     self.jump_speed=JUMP_SPEED
     
-    --[[self.animation_style={
-        left=Animation(SPRITE_SHEET_TABLE.left,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        right=Animation(SPRITE_SHEET_TABLE.right,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        jump=Animation(SPRITE_SHEET_TABLE.jump,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        duck=Animation(SPRITE_SHEET_TABLE.duck,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        idle=Animation(SPRITE_SHEET_TABLE.idle,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        right_run=Animation(SPRITE_SHEET_TABLE.right_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        left_run=Animation(SPRITE_SHEET_TABLE.left_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION)
-    }]]
-    
-    --self.current_animation=self.animation_style.idle
-    --self.current_animation_style="idle"
     self.sprite_width=SPRITE_WIDTH
     self.sprite_height=SPRITE_HEIGHT
 
@@ -101,7 +89,7 @@ end
 
 function player:draw()
     local px,py=self.body.getPosition()
-    love.graphics.draw("rectangle",px,py)
+    love.graphics.draw(self.shape,px,py)
 end
 
 return player
