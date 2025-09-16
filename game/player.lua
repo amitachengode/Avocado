@@ -109,12 +109,12 @@ end
 function player:update(dt)
     self:update_keypress(dt)
     self:update_motion(dt)
-    self.current_animation:update(dt)
+    --self.current_animation:update(dt)
 end
 
 function player:draw()
     local px,py=self.body.getPosition()
-    self.current_animation:draw(px,py)
+    --self.current_animation:draw(px,py)
 end
 
 return player

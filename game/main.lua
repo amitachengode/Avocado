@@ -1,3 +1,4 @@
+--[[
 class=require 'class'
 Animation=require 'animation'
 function love.load()
@@ -12,4 +13,24 @@ end
 function love.draw()
     love.graphics.clear(1,1,1,1)
     sprite:draw()
+end]]
+
+class=require 'class'
+Animation=require 'animation'
+player=require 'player'
+
+function love.load()
+    love.window.setMode(0,0)
+    player=player()
 end
+
+function love.update(dt)
+    player:update(dt)
+end
+
+function love.draw()
+    love.graphics.clear(1,1,1,1)
+    player:draw()
+end
+
+
