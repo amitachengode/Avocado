@@ -1,14 +1,12 @@
 class=require 'class'
 Animation=require 'animation'
 
-local FRAME_WIDTH=nil
-local FRAME_HEIGHT=nil
-local BASE_SPEED=nil
-local MAX_SPEED=nil
-local SPRITE_WIDTH=nil
-local SPRITE_HEIGHT=nil
+local BASE_SPEED=10
+local MAX_SPEED=20
+local SPRITE_WIDTH=100
+local SPRITE_HEIGHT=100
 local FRAME_DURATION=nil
-local JUMP_SPEED=nil
+local JUMP_SPEED=10
 local SPRITE_SHEET_TABLE={
     left="",
     right="",
@@ -41,7 +39,7 @@ function player:init(world,x,y)
     self.shape=love.physics.newRectangleShape(0,0,SPRITE_WIDTH,SPRITE_HEIGHT)
     self.fixture=love.physics.newFixture(self.body,self.shape)
     self.body.setFixedRotation(true)
-    self.fixture.setRestitution(1)
+    self.fixture.setRestitution(0)
 
     self.key_pressed={
         w=false,
@@ -89,7 +87,8 @@ end
 
 function player:draw()
     local px,py=self.body.getPosition()
-    love.graphics.draw(self.shape,px,py)
+    love.graphics.setColor(255,255,255,255) -- red (number), green (number), blue (number), alpha (number))
+    love.graphics.rectangle("fill",px,py,SPRITE_WIDTH,SPRITE_HEIGHT)
 end
 
 return player

@@ -15,22 +15,25 @@ function love.draw()
     sprite:draw()
 end]]
 
-class=require 'class'
-Animation=require 'animation'
-player=require 'player'
+require 'class'
+require 'animation'
+require 'player'
+require 'world'
 
 function love.load()
     love.window.setMode(0,0)
-    player=player()
+    world=World()
+    player1=Player(world,500,0)
+    world:add_body(player)
 end
 
 function love.update(dt)
-    player:update(dt)
+    player1:update(dt)
+    world:update(dt)
 end
 
 function love.draw()
     love.graphics.clear(1,1,1,1)
-    player:draw()
+    world:draw()
 end
-
 

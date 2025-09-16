@@ -59,7 +59,7 @@ function Alien:init(world,player,x,y)
     self.shape=love.physics.newRectangleShape(self.width,self.height)
     self.fixture=love.physics.newFixture(self.body,self.shape)
     self.body:setFixedRotation(true)
-    self.Fixture:setRestitution(1)
+    self.Fixture:setRestitution(0)
 
     self.player=player
 end
@@ -78,7 +78,6 @@ end
 
 function Alien:draw()
     local ax,ay=self.body:getPosition()
-    self.current_animation:draw(ax,ay,self.sprite_width,self.sprite_height)
 end
 
 return Alien

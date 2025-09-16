@@ -7,7 +7,7 @@ function World:init(gravity_x,gravity_y,pixels_per_meter)
     self.gravity_x=gravity_x or 0
     self.gravity_y=gravity_y or 9.81
     self.world=love.physics.newWorld(self.gravity_x,self.gravity_y,true)
-    self.world.setMeter(pixels_per_meter)
+    self.world.setMeter(pixels_per_meter or 32)
     self.bodies={}
 end
 
@@ -38,3 +38,5 @@ function World:remove_body(body)
     end
     body.body:destroy()
 end
+
+return World
