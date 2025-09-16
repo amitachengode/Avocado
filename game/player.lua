@@ -33,7 +33,7 @@ function player:init(world,x,y)
     self.max_speed=MAX_SPEED
     self.jump_speed=JUMP_SPEED
     
-    self.animation_style={
+    --[[self.animation_style={
         left=Animation(SPRITE_SHEET_TABLE.left,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
         right=Animation(SPRITE_SHEET_TABLE.right,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
         jump=Animation(SPRITE_SHEET_TABLE.jump,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
@@ -41,10 +41,10 @@ function player:init(world,x,y)
         idle=Animation(SPRITE_SHEET_TABLE.idle,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
         right_run=Animation(SPRITE_SHEET_TABLE.right_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
         left_run=Animation(SPRITE_SHEET_TABLE.left_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION)
-    }
+    }]]
     
-    self.current_animation=self.animation_style.idle
-    self.current_animation_style="idle"
+    --self.current_animation=self.animation_style.idle
+    --self.current_animation_style="idle"
     self.sprite_width=SPRITE_WIDTH
     self.sprite_height=SPRITE_HEIGHT
 
@@ -78,43 +78,30 @@ function player:update_motion(dt)
     local px,py=self.body.getPosition()
     if self.key_pressed.w then
         self.body:setPosition(px,py-self.speed*dt)
-        self.current_animation=self.animation_style.jump
-        self.current_animation_style="jump"
     end
     if self.key_pressed.a and self.key_pressed.shift then
         self.body:setPosition(px-self.max_speed*dt,py)
-        self.current_animation=self.animation_style.left_run
-        self.current_animation_style="left_run"
     elseif self.key_pressed.a then
         self.body:setPosition(px-self.speed*dt,py)
-        self.current_animation=self.animation_style.left
-        self.current_animation_style="left"
     end
     if self.key_pressed.s then
         self.body:setPosition(px,py+self.speed*dt)
-        self.current_animation=self.animation_style.duck
-        self.current_animation_style="duck"
     end
     if self.key_pressed.d and self.key_pressed.shift then
         self.body:setPosition(px+self.max_speed*dt,py)
-        self.current_animation=self.animation_style.right_run
-        self.current_animation_style="right_run"
     elseif self.key_pressed.d then
         self.body:setPosition(px+self.speed*dt,py)
-        self.current_animation=self.animation_style.right
-        self.current_animation_style="right"
     end
 end
 
 function player:update(dt)
     self:update_keypress(dt)
     self:update_motion(dt)
-    --self.current_animation:update(dt)
 end
 
 function player:draw()
     local px,py=self.body.getPosition()
-    --self.current_animation:draw(px,py)
+    love.graphics.draw("rectangle",px,py)
 end
 
 return player
