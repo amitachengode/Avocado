@@ -1,5 +1,5 @@
 class=require 'class'
-animation=require 'animation'
+Animation=require 'animation'
 
 local FRAME_WIDTH=nil
 local FRAME_HEIGHT=nil
@@ -34,13 +34,13 @@ function player:init(world,x,y)
     self.jump_speed=JUMP_SPEED
     
     self.animation_style={
-        left=animation.Animation(SPRITE_SHEET_TABLE.left,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        right=animation.Animation(SPRITE_SHEET_TABLE.right,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        jump=animation.Animation(SPRITE_SHEET_TABLE.jump,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        duck=animation.Animation(SPRITE_SHEET_TABLE.duck,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        idle=animation.Animation(SPRITE_SHEET_TABLE.idle,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        right_run=animation.Animation(SPRITE_SHEET_TABLE.right_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
-        left_run=animation.Animation(SPRITE_SHEET_TABLE.left_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION)
+        left=Animation(SPRITE_SHEET_TABLE.left,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
+        right=Animation(SPRITE_SHEET_TABLE.right,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
+        jump=Animation(SPRITE_SHEET_TABLE.jump,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
+        duck=Animation(SPRITE_SHEET_TABLE.duck,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
+        idle=Animation(SPRITE_SHEET_TABLE.idle,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
+        right_run=Animation(SPRITE_SHEET_TABLE.right_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION),
+        left_run=Animation(SPRITE_SHEET_TABLE.left_run,FRAME_WIDTH,FRAME_HEIGHT,FRAME_DURATION)
     }
     
     self.current_animation=self.animation_style.idle
@@ -116,3 +116,5 @@ function player:draw()
     local px,py=self.body.getPosition()
     self.current_animation:draw(px,py)
 end
+
+return player
